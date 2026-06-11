@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Japan Business Idea Generator | ビジネスアイデア</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #C8102E;
+      --dark-red: #9b0d23;
+      --navy: #0f1729;
+      --navy2: #1a2744;
+      --cream: #f7f4ef;
+      --gold: #c8902a;
+      --text: #1e1e2e;
+      --muted: #6b6b80;
+      --white: #ffffff;
+      --border: #e2dfd8;
+      --card-bg: #ffffff;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ─── HEADER ─── */
+    .header {
+      background: var(--navy);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: -0.3px;
+    }
+    .logo-flag {
+      width: 26px;
+      height: 18px;
+      background: white;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo-flag::after {
+      content: '';
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--red);
+    }
+    .header-tag {
+      color: rgba(255,255,255,0.4);
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ─── HERO ─── */
+    #hero { display: block; }
+    .hero {
+      background: linear-gradient(145deg, var(--navy) 0%, var(--navy2) 100%);
+      color: white;
+      padding: 72px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '日本';
+      position: absolute;
+      font-size: 260px;
+      font-weight: 900;
+      opacity: 0.03;
+      right: -30px;
+      top: -60px;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .hero::after {
+      content: '経済';
+      position: absolute;
+      font-size: 180px;
+      font-weight: 900;
+      opacity: 0.03;
+      left: -20px;
+      bottom: -40px;
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(200,16,46,0.18);
+      border: 1px solid rgba(200,16,46,0.35);
+      color: #ff8095;
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(30px, 5.5vw, 56px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      letter-spacing: -1px;
+    }
+    .hero h1 em {
+      color: var(--red);
+      font-style: normal;
+    }
+    .hero p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .btn-start {
+      background: var(--red);
+      color: white;
+      border: none;
+      padding: 15px 36px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: -0.2px;
+    }
+    .btn-start:hover {
+      background: var(--dark-red);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(200,16,46,0.35);
+    }
+
+    /* ─── STATS BAR ─── */
+    .stats-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+      padding: 0 28px;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-value {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 3px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .how-it-works {
+      background: var(--cream);
+      padding: 48px 24px;
+      text-align: center;
+    }
+    .how-it-works h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 32px;
+      letter-spacing: -0.3px;
+    }
+    .steps-row {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .how-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 0 24px;
+      flex: 1;
+      min-width: 160px;
+      position: relative;
+    }
+    .how-step::after {
+      content: '→';
+      position: absolute;
+      right: -8px;
+      top: 20px;
+      color: var(--border);
+      font-size: 20px;
+    }
+    .how-step:last-child::after { display: none; }
+    .how-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--navy);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+    .how-step p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+      text-align: center;
+    }
+    .how-step strong {
+      font-size: 14px;
+      color: var(--text);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* ─── QUESTIONNAIRE ─── */
+    #questionnaire { display: none; max-width: 680px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    .progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+    .progress-track {
+      flex: 1;
+      background: var(--border);
+      height: 5px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      background: var(--red);
+      height: 100%;
+      border-radius: 5px;
+      transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .progress-text {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .step { display: none; }
+    .step.active {
+      display: block;
+      animation: slideUp 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .q-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-bottom: 10px;
+    }
+    .step h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .step .subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .opt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .opt-grid.cols-1 { grid-template-columns: 1fr; }
+
+    .opt {
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      cursor: pointer;
+      transition: border-color 0.18s, background 0.18s, transform 0.18s;
+      background: var(--white);
+      text-align: left;
+      user-select: none;
+    }
+    .opt:hover {
+      border-color: rgba(200,16,46,0.4);
+      background: #fff8f9;
+      transform: translateY(-1px);
+    }
+    .opt.selected {
+      border-color: var(--red);
+      background: #fff3f5;
+    }
+    .opt-emoji { font-size: 26px; margin-bottom: 10px; display: block; }
+    .opt-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .opt-desc  { font-size: 12px; color: var(--muted); line-height: 1.45; }
+
+    .step-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .btn-back {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.15s;
+    }
+    .btn-back:hover { color: var(--text); }
+    .btn-next {
+      background: var(--navy);
+      color: white;
+      border: none;
+      padding: 13px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-next:hover:not(:disabled) {
+      background: #0a0f1e;
+      transform: translateY(-1px);
+    }
+    .btn-next:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+    .btn-generate {
+      background: var(--red);
+    }
+    .btn-generate:hover:not(:disabled) {
+      background: var(--dark-red);
+      box-shadow: 0 8px 24px rgba(200,16,46,0.3);
+    }
+
+    /* ─── LOADING ─── */
+    #loading {
+      display: none;
+      text-align: center;
+      padding: 100px 24px;
+    }
+    .spinner {
+      width: 52px;
+      height: 52px;
+      border: 4px solid var(--border);
+      border-top-color: var(--red);
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+      margin: 0 auto 28px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #loading h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    #loading p { color: var(--muted); font-size: 15px; }
+    .loading-facts {
+      max-width: 420px;
+      margin: 28px auto 0;
+      background: white;
+      border-radius: 12px;
+      padding: 16px 20px;
+      border: 1px solid var(--border);
+    }
+    .loading-facts .fact-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--red);
+      margin-bottom: 6px;
+    }
+    .loading-facts p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* ─── RESULTS ─── */
+    #results { display: none; max-width: 860px; margin: 0 auto; padding: 48px 20px 80px; }
+
+    .results-header {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+    .results-header .badge {
+      display: inline-block;
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 14px;
+    }
+    .results-header h2 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+    .results-header p {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .idea-card {
+      background: var(--white);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      margin-bottom: 24px;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .idea-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 26px 28px 0;
+    }
+    .idea-emoji {
+      font-size: 44px;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .idea-meta { flex: 1; min-width: 0; }
+    .idea-rank {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+    .idea-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 5px;
+      letter-spacing: -0.4px;
+      line-height: 1.2;
+    }
+    .idea-tagline { font-size: 14px; color: var(--muted); line-height: 1.4; }
+
+    .card-body { padding: 20px 28px 26px; }
+    .idea-desc {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+
+    .japan-box {
+      background: #fffbf0;
+      border: 1px solid #ffe08a;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+    }
+    .japan-box-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #a0720a;
+      margin-bottom: 6px;
+    }
+    .japan-box p {
+      font-size: 13.5px;
+      color: #5c4800;
+      line-height: 1.65;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+    .metric { display: flex; flex-direction: column; gap: 4px; }
+    .metric-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--muted);
+    }
+    .metric-value { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.4; }
+
+    /* ─── RESTART / ACTIONS ─── */
+    .results-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 44px;
+      flex-wrap: wrap;
+    }
+    .btn-restart {
+      background: none;
+      border: 2px solid var(--border);
+      color: var(--muted);
+      padding: 12px 26px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .btn-restart:hover {
+      border-color: var(--navy);
+      color: var(--navy);
+    }
+
+    /* ─── EXPORT BUTTON ─── */
+    .btn-export {
+      background: var(--navy);
+      color: white;
+      border: none;
+      padding: 12px 26px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-export:hover {
+      background: #0a0f1e;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(15,23,41,0.25);
+    }
+
+    /* ─── PRINT / PDF ─── */
+    .print-header { display: none; }
+
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+      .header, #hero, #questionnaire, #loading, .results-actions,
+      .results-header .badge { display: none !important; }
+
+      body { background: #fff; font-size: 11pt; }
+
+      #results {
+        display: block !important;
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      .print-header {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 16px;
+        border-bottom: 3px solid #C8102E;
+        margin-bottom: 28px;
+      }
+      .print-header-left { display: flex; align-items: center; gap: 12px; }
+      .print-flag {
+        width: 32px; height: 22px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 2px;
+        display: flex; align-items: center; justify-content: center;
+      }
+      .print-flag::after {
+        content: '';
+        width: 14px; height: 14px;
+        border-radius: 50%;
+        background: #C8102E;
+      }
+      .print-title { font-size: 18pt; font-weight: 800; color: #0f1729; letter-spacing: -0.5px; }
+      .print-subtitle { font-size: 9pt; color: #6b6b80; margin-top: 2px; }
+      .print-date { font-size: 9pt; color: #6b6b80; text-align: right; }
+
+      .results-header h2 { font-size: 16pt; margin-bottom: 4px; }
+      .results-header p { font-size: 10pt; }
+      .results-header { margin-bottom: 24px; }
+
+      .idea-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+        margin-bottom: 20px;
+        border-radius: 10px;
+      }
+
+      .card-top { padding: 18px 20px 0; }
+      .idea-emoji { font-size: 30pt; }
+      .idea-title { font-size: 14pt; }
+      .idea-tagline { font-size: 10pt; }
+      .idea-rank { font-size: 8pt; }
+      .card-body { padding: 14px 20px 18px; }
+      .idea-desc { font-size: 10pt; line-height: 1.6; margin-bottom: 12px; }
+
+      .japan-box {
+        background: #fffbf0 !important;
+        border: 1px solid #ffe08a !important;
+        padding: 10px 14px;
+        margin-bottom: 14px;
+        border-radius: 6px;
+      }
+      .japan-box-label { font-size: 8pt; }
+      .japan-box p { font-size: 9.5pt; }
+
+      .metrics { gap: 10px; padding-top: 12px; grid-template-columns: 1fr 1fr; }
+      .metric-label { font-size: 8pt; }
+      .metric-value { font-size: 9.5pt; }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 580px) {
+      .opt-grid { grid-template-columns: 1fr; }
+      .hero { padding: 52px 20px 44px; }
+      .stats-bar { gap: 0; }
+      .stat { padding: 10px 16px; border-right: none; border-bottom: 1px solid var(--border); }
+      .stat:last-child { border-bottom: none; }
+      .how-step::after { display: none; }
+      .card-top { flex-direction: column; gap: 10px; }
+      .idea-emoji { font-size: 36px; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .steps-row { flex-direction: column; gap: 20px; }
+      .how-step { flex-direction: row; align-items: flex-start; text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <div class="logo-flag"></div>
+    Japan Biz Generator
+  </div>
+  <span class="header-tag">ビジネスアイデア</span>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero">
+    <div class="hero-badge">🗾 Japan Market Intelligence</div>
+    <h1>Discover Your <em>Perfect Business</em><br>in Japan's Economy</h1>
+    <p>Answer 6 targeted questions and receive personalized business ideas matched to Japan's unique market dynamics, demographic shifts, and emerging opportunities.</p>
+    <button class="btn-start" onclick="startQuestionnaire()">
+      Start the Generator &rarr;
+    </button>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-value">¥600T</div>
+      <div class="stat-label">Japan GDP (2024)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">31.9M</div>
+      <div class="stat-label">Annual Tourists</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">9M+</div>
+      <div class="stat-label">Vacant Homes (Akiya)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">29%</div>
+      <div class="stat-label">Population Over 65</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">#87</div>
+      <div class="stat-label">Global English Ranking</div>
+    </div>
+  </div>
+
+  <div class="how-it-works">
+    <h3>How it works</h3>
+    <div class="steps-row">
+      <div class="how-step">
+        <div class="how-icon">📋</div>
+        <div>
+          <strong>Answer 6 Questions</strong>
+          <p>Your background, budget, skills & interests</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-icon">🧠</div>
+        <div>
+          <strong>Smart Matching</strong>
+          <p>Ideas scored against Japan's real market data</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-icon">💡</div>
+        <div>
+          <strong>Get 4 Ideas</strong>
+          <p>With costs, revenue, challenges & Japan context</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUESTIONNAIRE -->
+<section id="questionnaire">
+  <div class="progress-wrap">
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="progress-text" id="progress-text">1 / 6</div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="step active" id="step-1">
+    <div class="q-label">Question 1 of 6</div>
+    <h2>What's your situation in Japan?</h2>
+    <p class="subtitle">Your visa status and background affects which opportunities are most accessible and where you have natural advantages.</p>
+    <div class="opt-grid">
+      <div class="opt" data-step="1" data-val="foreigner_resident" onclick="pick(this)">
+        <span class="opt-emoji">🌏</span>
+        <div class="opt-title">Foreign Resident</div>
+        <div class="opt-desc">Living in Japan with a work or long-term visa</div>
+      </div>
+      <div class="opt" data-step="1" data-val="japanese" onclick="pick(this)">
+        <span class="opt-emoji">🇯🇵</span>
+        <div class="opt-title">Japanese National</div>
+        <div class="opt-desc">Japanese citizen or permanent resident</div>
+      </div>
+      <div class="opt" data-step="1" data-val="planning_move" onclick="pick(this)">
+        <span class="opt-emoji">✈️</span>
+        <div class="opt-title">Planning to Move</div>
+        <div class="opt-desc">Not yet in Japan but actively planning</div>
+      </div>
+      <div class="opt" data-step="1" data-val="remote" onclick="pick(this)">
+        <span class="opt-emoji">💻</span>
+        <div class="opt-title">Remote / From Abroad</div>
+        <div class="opt-desc">Want to target Japan's market from overseas</div>
+      </div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-back" style="visibility:hidden">← Back</button>
+      <button class="btn-next" id="btn-1" onclick="nextStep()" disabled>Next &rarr;</button>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="step" id="step-2">
+    <div class="q-label">Question 2 of 6</div>
+    <h2>What's your startup budget?</h2>
+    <p class="subtitle">Be realistic — Japan has excellent low-cost opportunities, and some of the best ones require almost no capital to start.</p>
+    <div class="opt-grid">
+      <div class="opt" data-step="2" data-val="bootstrap" onclick="pick(this)">
+        <span class="opt-emoji">🌱</span>
+        <div class="opt-title">Under ¥500K (~$3K)</div>
+        <div class="opt-desc">Bootstrap / side hustle level</div>
+      </div>
+      <div class="opt" data-step="2" data-val="small" onclick="pick(this)">
+        <span class="opt-emoji">💼</span>
+        <div class="opt-title">¥500K – ¥3M (~$3–20K)</div>
+        <div class="opt-desc">Serious small business launch</div>
+      </div>
+      <div class="opt" data-step="2" data-val="medium" onclick="pick(this)">
+        <span class="opt-emoji">🏢</span>
+        <div class="opt-title">¥3M – ¥20M (~$20–130K)</div>
+        <div class="opt-desc">Meaningful investment capital</div>
+      </div>
+      <div class="opt" data-step="2" data-val="large" onclick="pick(this)">
+        <span class="opt-emoji">🚀</span>
+        <div class="opt-title">¥20M+ (~$130K+)</div>
+        <div class="opt-desc">Startup funding / major investment</div>
+      </div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep()">← Back</button>
+      <button class="btn-next" id="btn-2" onclick="nextStep()" disabled>Next &rarr;</button>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="step" id="step-3">
+    <div class="q-label">Question 3 of 6</div>
+    <h2>What's your core skill set?</h2>
+    <p class="subtitle">Pick the area where you have the most credibility and experience. This is your unfair advantage in the market.</p>
+    <div class="opt-grid">
+      <div class="opt" data-step="3" data-val="tech" onclick="pick(this)">
+        <span class="opt-emoji">💻</span>
+        <div class="opt-title">Technology</div>
+        <div class="opt-desc">Software, apps, AI, digital products</div>
+      </div>
+      <div class="opt" data-step="3" data-val="food" onclick="pick(this)">
+        <span class="opt-emoji">🍜</span>
+        <div class="opt-title">Food & Hospitality</div>
+        <div class="opt-desc">Cooking, restaurants, accommodation, service</div>
+      </div>
+      <div class="opt" data-step="3" data-val="education" onclick="pick(this)">
+        <span class="opt-emoji">📚</span>
+        <div class="opt-title">Education & Training</div>
+        <div class="opt-desc">Teaching, coaching, curriculum design</div>
+      </div>
+      <div class="opt" data-step="3" data-val="creative" onclick="pick(this)">
+        <span class="opt-emoji">🎨</span>
+        <div class="opt-title">Creative & Design</div>
+        <div class="opt-desc">Art, media, content, branding, aesthetics</div>
+      </div>
+      <div class="opt" data-step="3" data-val="business" onclick="pick(this)">
+        <span class="opt-emoji">📊</span>
+        <div class="opt-title">Business & Finance</div>
+        <div class="opt-desc">Consulting, operations, strategy, investing</div>
+      </div>
+      <div class="opt" data-step="3" data-val="health" onclick="pick(this)">
+        <span class="opt-emoji">🏥</span>
+        <div class="opt-title">Health & Wellness</div>
+        <div class="opt-desc">Healthcare, fitness, mental wellness</div>
+      </div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep()">← Back</button>
+      <button class="btn-next" id="btn-3" onclick="nextStep()" disabled>Next &rarr;</button>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="step" id="step-4">
+    <div class="q-label">Question 4 of 6</div>
+    <h2>Who do you want to serve?</h2>
+    <p class="subtitle">Japan's demographics create very different opportunity sizes. Your customer segment shapes everything from language requirements to marketing spend.</p>
+    <div class="opt-grid">
+      <div class="opt" data-step="4" data-val="tourists" onclick="pick(this)">
+        <span class="opt-emoji">📸</span>
+        <div class="opt-title">Inbound Tourists</div>
+        <div class="opt-desc">31.9M+ visitors/year with strong spending power</div>
+      </div>
+      <div class="opt" data-step="4" data-val="expats" onclick="pick(this)">
+        <span class="opt-emoji">🌐</span>
+        <div class="opt-title">Expats & Foreign Residents</div>
+        <div class="opt-desc">3.2M+ foreigners living in Japan</div>
+      </div>
+      <div class="opt" data-step="4" data-val="youth" onclick="pick(this)">
+        <span class="opt-emoji">🎌</span>
+        <div class="opt-title">Japanese Youth (18–35)</div>
+        <div class="opt-desc">Tech-savvy, global-minded, experience-focused</div>
+      </div>
+      <div class="opt" data-step="4" data-val="elderly" onclick="pick(this)">
+        <span class="opt-emoji">🧓</span>
+        <div class="opt-title">Elderly (60+)</div>
+        <div class="opt-desc">29% of population; asset-rich, underserved</div>
+      </div>
+      <div class="opt" data-step="4" data-val="b2b" onclick="pick(this)">
+        <span class="opt-emoji">🏭</span>
+        <div class="opt-title">Japanese Businesses (B2B)</div>
+        <div class="opt-desc">3.5M SMEs; conservative but high willingness to pay</div>
+      </div>
+      <div class="opt" data-step="4" data-val="global" onclick="pick(this)">
+        <span class="opt-emoji">🌍</span>
+        <div class="opt-title">Global Market</div>
+        <div class="opt-desc">Export Japanese products / IP / culture worldwide</div>
+      </div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep()">← Back</button>
+      <button class="btn-next" id="btn-4" onclick="nextStep()" disabled>Next &rarr;</button>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="step" id="step-5">
+    <div class="q-label">Question 5 of 6</div>
+    <h2>What type of business do you prefer?</h2>
+    <p class="subtitle">Your preferred operating model determines your daily life, scalability ceiling, and how you spend your time.</p>
+    <div class="opt-grid">
+      <div class="opt" data-step="5" data-val="digital" onclick="pick(this)">
+        <span class="opt-emoji">📱</span>
+        <div class="opt-title">Digital / App / SaaS</div>
+        <div class="opt-desc">Online-first, scalable, location-flexible</div>
+      </div>
+      <div class="opt" data-step="5" data-val="brick" onclick="pick(this)">
+        <span class="opt-emoji">🏪</span>
+        <div class="opt-title">Physical Store / F&B</div>
+        <div class="opt-desc">Café, restaurant, retail, studio space</div>
+      </div>
+      <div class="opt" data-step="5" data-val="service" onclick="pick(this)">
+        <span class="opt-emoji">🤝</span>
+        <div class="opt-title">Service / Consulting</div>
+        <div class="opt-desc">Expertise-driven, client relationships</div>
+      </div>
+      <div class="opt" data-step="5" data-val="ecommerce" onclick="pick(this)">
+        <span class="opt-emoji">📦</span>
+        <div class="opt-title">E-commerce / Products</div>
+        <div class="opt-desc">Selling physical or digital goods online</div>
+      </div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep()">← Back</button>
+      <button class="btn-next" id="btn-5" onclick="nextStep()" disabled>Next &rarr;</button>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="step" id="step-6">
+    <div class="q-label">Question 6 of 6</div>
+    <h2>Which Japan megatrend excites you most?</h2>
+    <p class="subtitle">Japan is in the middle of several massive structural shifts. Aligning with a trend you believe in means the market works with you, not against you.</p>
+    <div class="opt-grid cols-1">
+      <div class="opt" data-step="6" data-val="aging" onclick="pick(this)">
+        <span class="opt-emoji">👴</span>
+        <div class="opt-title">Aging Population & Silver Economy</div>
+        <div class="opt-desc">29% of Japan is 65+ — the world's most aged society. Demand for care, convenience, tech assistance, and health services is catastrophically underserved and government-subsidized.</div>
+      </div>
+      <div class="opt" data-step="6" data-val="tourism" onclick="pick(this)">
+        <span class="opt-emoji">🗼</span>
+        <div class="opt-title">Tourism Boom & Unique Experiences</div>
+        <div class="opt-desc">Record 31.9M tourists in 2023 spending ¥5.3 trillion. The weak yen is driving unprecedented inbound spending. Tourists want authenticity over mass attractions.</div>
+      </div>
+      <div class="opt" data-step="6" data-val="dx" onclick="pick(this)">
+        <span class="opt-emoji">🖥️</span>
+        <div class="opt-title">Digital Transformation (DX)</div>
+        <div class="opt-desc">Japan ranks 29th globally in digital competitiveness despite being a tech nation. Fax machines, paper forms, and hanko stamps dominate SMEs — massive B2B opportunity with government subsidies.</div>
+      </div>
+      <div class="opt" data-step="6" data-val="rural" onclick="pick(this)">
+        <span class="opt-emoji">🌾</span>
+        <div class="opt-title">Rural Revitalization & Akiya</div>
+        <div class="opt-desc">9M+ vacant homes. Shrinking towns offering land and grants to attract entrepreneurs. Digital nomad visas, remote work culture, and ¥1M+ municipal relocation subsidies open new frontiers.</div>
+      </div>
+      <div class="opt" data-step="6" data-val="softpower" onclick="pick(this)">
+        <span class="opt-emoji">🎋</span>
+        <div class="opt-title">Japanese Culture Goes Global</div>
+        <div class="opt-desc">Anime market exceeded $30B globally in 2023. J-beauty, Japanese food, craftsmanship, and wellness concepts have unprecedented global demand. Weak yen makes sourcing from Japan highly competitive.</div>
+      </div>
+    </div>
+    <div class="step-nav">
+      <button class="btn-back" onclick="prevStep()">← Back</button>
+      <button class="btn-next btn-generate" id="btn-6" onclick="generate()" disabled>Generate My Ideas &rarr;</button>
+    </div>
+  </div>
+</section>
+
+<!-- LOADING -->
+<div id="loading">
+  <div class="spinner"></div>
+  <h3>Analyzing Japan's market landscape...</h3>
+  <p>Matching your profile to the best opportunities</p>
+  <div class="loading-facts">
+    <div class="fact-label">Did you know?</div>
+    <p id="loading-fact"></p>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<section id="results">
+
+  <!-- Print-only header (hidden on screen, shown when printing) -->
+  <div class="print-header">
+    <div class="print-header-left">
+      <div class="print-flag"></div>
+      <div>
+        <div class="print-title">Japan Business Idea Report</div>
+        <div class="print-subtitle">Personalized matches based on your profile &amp; Japan's market</div>
+      </div>
+    </div>
+    <div class="print-date" id="print-date"></div>
+  </div>
+
+  <div class="results-header">
+    <div class="badge">✓ 4 Ideas Matched</div>
+    <h2>Your Japan Business Matches</h2>
+    <p>Ranked by fit to your profile, budget, and chosen market trend</p>
+  </div>
+  <div id="cards"></div>
+  <div class="results-actions">
+    <button class="btn-export" onclick="exportPDF()">&#x2B07; Download PDF</button>
+    <button class="btn-restart" onclick="restart()">↺ Start Over with New Answers</button>
+  </div>
+</section>
+
+<script>
+const ANSWERS = {};
+let step = 1;
+
+// ─── IDEA DATABASE ─────────────────────────────────────────────────────────
+const IDEAS = [
+  {
+    id:1, emoji:'🏯',
+    title:'Akiya Renovation & Rural Retreat',
+    tagline:'Turn Japan\'s 9M vacant homes into sought-after stays or workation escapes',
+    desc:'Japan has over 9 million vacant homes (akiya), many available for under ¥1M or even free in rural municipalities. Purchase, renovate, and operate as boutique accommodation, a monthly remote-work retreat, or a long-term rental targeting expats and digital nomads. The government actively subsidizes renovation and even pays people to relocate.',
+    japan:'Municipalities offer grants of ¥200K–¥2M for akiya renovation and ¥1M relocation bonuses. Japan\'s 2024 Digital Nomad Visa opened the door to a new wave of residents. Post-COVID "dual living" (futatsunagari) is mainstream — urbanites want a rural base. The weak yen makes entry costs extremely low for foreign capital.',
+    cost:'¥1.5M–¥15M (property + reno)',
+    revenue:'¥80K–¥350K/month via Airbnb + direct bookings',
+    challenge:'Japanese property bureaucracy; renovation costs can escalate; rural contractor availability is limited',
+    market:'¥2.6 trillion rural tourism market; 9M+ akiya nationwide',
+    tags: { budget:['medium','large'], skills:['food','creative','business'], target:['tourists','expats','youth'], model:['brick','service'], trend:['rural','tourism'] }
+  },
+  {
+    id:2, emoji:'🎍',
+    title:'Authentic Cultural Experience Studio',
+    tagline:'Premium hands-on workshops — sake, soba, ceramics, ninja — for inbound visitors',
+    desc:'Create high-quality, immersive half-day experiences for tourists: sake brewing, soba making, traditional dyeing (shibori), samurai sword drawing, or ikebana. Partner with local artisans to ensure authenticity. Sell via Airbnb Experiences, Viator, hotel concierge partnerships, and direct booking through your own site.',
+    japan:'Inbound tourists spent ¥5.3 trillion in 2023. The average visitor to Japan now seeks authentic local experiences, not just sightseeing. "Ura Nihon" (off-the-beaten-path Japan) is trending globally. Tourists arriving from USD/EUR economies have strong purchasing power amplified by the weak yen.',
+    cost:'¥300K–¥3M (space + materials + licensing)',
+    revenue:'¥3,000–¥15,000 per person × 5–20 people/session',
+    challenge:'High competition in Kyoto/Tokyo; seasonality; guide licensing may be required for certain tours',
+    market:'Experience tourism growing 15%+ YoY; ¥167K average tourist spend per trip',
+    tags: { budget:['bootstrap','small','medium'], skills:['food','creative','education'], target:['tourists'], model:['brick','service'], trend:['tourism','softpower'] }
+  },
+  {
+    id:3, emoji:'🏥',
+    title:'Elder Care Tech & Home Services',
+    tagline:'Smart tools and concierge services for Japan\'s 36 million elderly',
+    desc:'Build a platform or service connecting elderly Japanese with vetted helpers for grocery runs, smartphone support, hospital escort, home cleaning, and companionship. Layer in IoT monitoring for family peace of mind. Government long-term care insurance (kaigo hoken) can partially subsidize services, reducing client friction.',
+    japan:'By 2040, 35% of Japan will be 65+. The government targets "aging in place" but faces a 380,000-caregiver shortage. 70%+ of elderly live separately from family. Welfare tech (介護テック) is a government-designated priority sector with dedicated subsidy programs. Pilot programs are easy to launch via municipal partnerships.',
+    cost:'¥500K–¥5M (platform or operations)',
+    revenue:'¥2,000–¥6,000/hour; recurring monthly client subscriptions',
+    challenge:'Trust and credential requirements; low-margin without scale; caregiver retention in a tight labor market',
+    market:'¥4.5 trillion home care market; growing 9% annually',
+    tags: { budget:['small','medium','large'], skills:['tech','health','business'], target:['elderly'], model:['digital','service'], trend:['aging'] }
+  },
+  {
+    id:4, emoji:'💼',
+    title:'SME Digital Transformation Consulting',
+    tagline:'Help Japan\'s 3.5M paper-driven small businesses finally go digital',
+    desc:'Japan\'s SMEs run on fax machines, Excel spreadsheets, and hanko stamps. Offer affordable DX packages: migrate to cloud accounting, set up LINE or Instagram for customer acquisition, implement a simple POS or booking system, or automate their order flow. High demand, low competition from English-speaking consultants.',
+    japan:'Japan ranks 29th globally for digital competitiveness. The government\'s "DX Subsidy" (IT導入補助金) allocates ¥450B annually for SMEs to adopt digital tools — clients can claim back 50–75% of your service cost. Most small owners are 55+ and desperate for help but can\'t navigate English-language SaaS.',
+    cost:'¥100K–¥500K (laptop + software + marketing)',
+    revenue:'¥200K–¥800K per project; ¥50K–¥200K/month retainer',
+    challenge:'Requires Japanese language fluency or a Japanese partner; conservative clients; trust-building takes time',
+    market:'3.5M SMEs; ¥450B annual government DX subsidy pool',
+    tags: { budget:['bootstrap','small'], skills:['tech','business'], target:['b2b'], model:['service','digital'], trend:['dx'] }
+  },
+  {
+    id:5, emoji:'🏺',
+    title:'Japanese Artisan Export Platform',
+    tagline:'Connect Japan\'s aging craftspeople with a hungry global market',
+    desc:'Act as an export agency and curator for authentic Japanese crafts — ceramics, lacquerware, hand-forged knives, textiles, sake, or specialty foods. Source directly from aging artisans (kōgei) who have zero online presence, handle photography, storytelling, international logistics, and brand-building. Sell via your own DTC site, Etsy, and wholesale to boutiques abroad.',
+    japan:'Japan has 230+ government-designated traditional crafts (dentō kōgei). 80%+ of workshops have no e-commerce. The weak yen makes Japanese goods 30–40% cheaper than 3 years ago for foreign buyers. "Made in Japan" commands a 20–50% premium globally. Aging artisans are desperate to find successors or at minimum new buyers.',
+    cost:'¥200K–¥2M (inventory + site + logistics setup)',
+    revenue:'35–55% margin on goods; potential for ¥3M+/month at scale',
+    challenge:'Relationship-building with artisans (slow trust culture); international shipping complexity; customs per market',
+    market:'Global Japanese craft demand estimated at ¥600B+ and growing with Japan soft power',
+    tags: { budget:['bootstrap','small','medium'], skills:['creative','business'], target:['global'], model:['ecommerce','service'], trend:['softpower','rural'] }
+  },
+  {
+    id:6, emoji:'🧘',
+    title:'Mental Health & Workplace Wellness',
+    tagline:'Break Japan\'s mental health stigma with discreet digital support',
+    desc:'Japan has one of the OECD\'s highest suicide rates and extreme mental health stigma — only 1 in 5 people with depression seek help. Build a discreet mobile app for stress management, anonymous therapist matching, or corporate wellness programs targeting Japan\'s overwork (karoshi) culture. Sell B2C or license to HR departments.',
+    japan:'Corporate wellness spending is growing 20%+ YoY as government pressure on companies to address karoshi intensifies. Foreign-origin therapy is perceived as culturally neutral, reducing stigma. The government introduced the "Stress Check" law in 2015 requiring companies with 50+ employees to test workers annually — creating a compliance-driven B2B entry point.',
+    cost:'¥2M–¥10M (app development + certification)',
+    revenue:'¥2,000–¥6,000/user/month; ¥300K–¥5M corporate license',
+    challenge:'Regulatory complexity around medical apps; stigma slows B2C adoption; therapist credentialing',
+    market:'¥300B+ corporate wellness market; 127M potential individual users',
+    tags: { budget:['medium','large'], skills:['tech','health','education'], target:['youth','b2b'], model:['digital'], trend:['dx','aging'] }
+  },
+  {
+    id:7, emoji:'🗣️',
+    title:'Language & Cross-Cultural Bridge Service',
+    tagline:'Remove Japan\'s language barrier for businesses and international visitors',
+    desc:'Offer bilingual consulting, translation, on-demand interpretation, or cross-cultural training for companies entering Japan — or for Japanese companies expanding globally. Or focus on inbound healthcare tourism, real estate services for foreign buyers, or English-language legal/visa navigation. The language gap is Japan\'s #1 friction point.',
+    japan:'Japan ranks 87th out of 113 countries in English proficiency (EF EPI 2023). Inbound tourism and foreign investment are surging simultaneously. Clinics, real estate agencies, and law firms desperately need bilingual staff but can\'t hire full-time. The new Startup Visa and Digital Nomad Visa created new waves of foreigners needing Japanese-language navigation.',
+    cost:'¥100K–¥800K (tools + marketing + certification)',
+    revenue:'¥3,000–¥15,000/hour; ¥50K–¥300K/month retainer',
+    challenge:'Near-native Japanese required for credibility in B2B; price pressure from machine translation tools',
+    market:'¥500B+ translation/interpretation industry; rapidly growing with FDI and tourism',
+    tags: { budget:['bootstrap','small'], skills:['education','business','creative'], target:['tourists','b2b','expats'], model:['service','digital'], trend:['tourism','dx','softpower'] }
+  },
+  {
+    id:8, emoji:'🍱',
+    title:'Ghost Kitchen / Niche Food Delivery Brand',
+    tagline:'Launch a food brand without rent by using shared commercial kitchen space',
+    desc:'Start a food delivery brand from a shared cloud kitchen — no storefront, no rent premium. Target an underserved niche: halal bento, fully vegan Japanese cuisine, late-night Western comfort food, high-protein athlete meals, or healthy kids bento subscriptions. Sell via Uber Eats, Demae-can, and weekly subscription boxes.',
+    japan:'Japan\'s food delivery market grew from ¥300B to ¥800B+ post-COVID. Halal food is critically underserved — only 300 halal-certified restaurants in Tokyo despite 200K+ Muslim residents and millions of Muslim tourists. Vegan options remain rare outside expensive restaurants. Corporate bento delivery is a ¥200B market still dominated by old-guard caterers.',
+    cost:'¥300K–¥2M (equipment + ingredients + platform fees)',
+    revenue:'25–40% food margin; ¥500K–¥3M/month at scale',
+    challenge:'Fierce platform competition and fees (30%); food cost inflation since 2022; brand differentiation',
+    market:'¥800B delivery market; halal alone ¥70B and growing 25% YoY',
+    tags: { budget:['bootstrap','small','medium'], skills:['food'], target:['expats','youth','tourists'], model:['brick','ecommerce'], trend:['tourism','softpower'] }
+  },
+  {
+    id:9, emoji:'🌄',
+    title:'Remote Work Rural Hub (Workation)',
+    tagline:'Coworking + accommodation in Japan\'s photogenic countryside',
+    desc:'Combine coworking space with short or long-term lodging in a renovated akiya or repurposed rural building. Target urban remote workers, international digital nomads, and Japan\'s growing "dual living" demographic. Partner with the local municipality — they often co-fund marketing, provide the property cheaply, and list you in official workation directories.',
+    japan:'Japan launched a Digital Nomad Visa in 2024. The government\'s "workation" policy targets 1M urban workers relocating to rural areas by 2027. 43% of Tokyo office workers now work remote at least part-time. Municipalities compete to attract workers with grants of ¥200K–¥1M and free/subsidized property.',
+    cost:'¥3M–¥20M (property + fit-out + internet infrastructure)',
+    revenue:'¥100K–¥600K/month; government co-funding common',
+    challenge:'Location selection is critical; rural broadband can be poor; initial customer acquisition costs',
+    market:'¥150B workation market; expected to triple by 2028',
+    tags: { budget:['medium','large'], skills:['business','tech','food'], target:['expats','youth'], model:['brick','service'], trend:['rural','dx'] }
+  },
+  {
+    id:10, emoji:'🎌',
+    title:'Anime & Japanese IP Licensing Agency',
+    tagline:'Bridge Japan\'s IP creators with global merchandise and media partners',
+    desc:'Act as a licensing agent or production consultant between Japanese anime studios, manga artists, indie game developers, and global brands seeking to use their IP. Or create original anime-adjacent content (YouTube channel, merch line, live events) riding the global anime wave. Most Japanese studios have zero international licensing infrastructure.',
+    japan:'The global anime market exceeded $30B in 2023, growing 10%+ annually. Over 60% of Netflix anime viewership comes from outside Asia. Yet 70%+ of Japanese studios handle licensing ad hoc or not at all. Manga exports are surging. The "Cool Japan" government fund provides co-investment for qualifying content businesses.',
+    cost:'¥500K–¥5M (legal + relationships + content production)',
+    revenue:'15–25% licensing commission; or direct margin on merchandise',
+    challenge:'Gatekeeping by established agents (Toei, Kadokawa subsidiaries); relationship-building culture; IP legal complexity',
+    market:'$30B+ global anime market; ¥1.2 trillion Japanese content industry',
+    tags: { budget:['small','medium','large'], skills:['creative','business'], target:['global'], model:['service','ecommerce','digital'], trend:['softpower'] }
+  },
+  {
+    id:11, emoji:'📦',
+    title:'Japanese Subscription Box (Export)',
+    tagline:'Deliver Japan\'s best products to global subscribers every month',
+    desc:'Curate monthly subscription boxes featuring Japanese snacks, beauty products, stationery, seasonal goods, or artisan crafts — and ship globally. Source cheaply using the weak yen; sell at premium abroad. Build a brand around Japanese culture education, creating loyalty beyond the products themselves. Consider niche boxes (zero-waste, premium sake, J-beauty) to stand out.',
+    japan:'Japan has 10,000+ unique consumer products unavailable overseas. Subscription commerce grew 15% in 2023. Japanese convenience store (konbini) items have massive cult followings globally — with dedicated YouTube channels earning millions of views. Japanese beauty (J-beauty) is growing 20%+ YoY in US/EU markets. The weak yen gives you a 30–40% sourcing advantage.',
+    cost:'¥300K–¥3M (inventory + packaging + fulfillment setup)',
+    revenue:'$30–$80/box; 5,000 subscribers = $150K–$400K/month revenue',
+    challenge:'Customs complexity per country; freshness for food items; logistics cost erodes margins at small scale',
+    market:'¥150B+ global Japan goods demand; subscription box market growing 18% annually',
+    tags: { budget:['bootstrap','small','medium'], skills:['creative','food','business'], target:['global'], model:['ecommerce'], trend:['softpower'] }
+  },
+  {
+    id:12, emoji:'📝',
+    title:'Japanese Language School / EdTech',
+    tagline:'Teach Japanese to the world — or teach the world to Japanese professionals',
+    desc:'Launch an online Japanese language school targeting the global audience of anime fans, travelers, and Japan-curious learners. Or flip it: build a B2B English training service for Japanese professionals who urgently need English for global roles. Both markets are large, growing fast, and underserved by existing players.',
+    japan:'Japanese language learners outside Japan surged to 3.9M in 2022, up 90% from 2012 (Japan Foundation). Anime drives a youth boom with no signs of stopping. Meanwhile, Japan\'s English deficit costs corporations billions — 78% of Japanese companies say their lack of English fluency limits global expansion. Corporate English training is a ¥200B market growing 12% YoY.',
+    cost:'¥100K–¥2M (curriculum + platform + teacher pipeline)',
+    revenue:'¥3,000–¥50,000/student/month; or SaaS ¥2,000–¥8,000/month',
+    challenge:'High competition (Duolingo, italki); teacher quality control at scale; high churn rate for language apps',
+    market:'3.9M+ overseas Japanese learners; ¥200B corporate English market',
+    tags: { budget:['bootstrap','small','medium'], skills:['education'], target:['global','expats','b2b'], model:['digital','service'], trend:['softpower','dx'] }
+  },
+  {
+    id:13, emoji:'☕',
+    title:'Specialty Café with Cultural Concept',
+    tagline:'Third-wave coffee meets Japanese aesthetics in a one-of-a-kind space',
+    desc:'Open a specialty coffee café anchored around a distinctive Japanese concept: wagashi pairing, themed reading rooms (hon-ya café), sake + espresso cocktails, a matcha omakase bar, or a "silent café" for Japan\'s introvert culture. Stand out through experience design, quality sourcing, and a concept-driven Instagram presence.',
+    japan:'Japan has the world\'s third-largest coffee market (¥1.4 trillion). Tokyo and Osaka are global leaders in third-wave coffee culture. Japanese consumers reliably pay premium for quality + ambience. Foreign concepts like Blue Bottle and % Arabica achieved cult status fast. Tourists actively seek "hidden" café experiences to photograph and share.',
+    cost:'¥3M–¥18M (rent + fit-out + equipment)',
+    revenue:'¥400K–¥1.8M/month at full operation',
+    challenge:'High Tokyo/Osaka commercial rent; severe staffing shortage in F&B; slow break-even (12–18 months typical)',
+    market:'¥1.4 trillion coffee market; café tourism is a top search category for Japan visitors',
+    tags: { budget:['medium','large'], skills:['food','creative'], target:['youth','expats','tourists'], model:['brick'], trend:['tourism','softpower'] }
+  },
+  {
+    id:14, emoji:'📋',
+    title:'Japan Entry Consultancy (Visa & Setup)',
+    tagline:'Navigate Japan\'s opaque immigration and business setup for foreigners',
+    desc:'Provide end-to-end support for foreigners entering Japan: visa applications (Startup Visa, Digital Nomad Visa, Investor Visa), company incorporation (KK/GK), bank account opening, address registration, and relocation services. Package it as a premium done-for-you service. High-value, low overhead, fully remote possible.',
+    japan:'Japan opened a Startup Visa (2023), Digital Nomad Visa (2024), and simplified Investor Visa routes. Foreign direct investment hit record highs in 2024. Yet the process remains almost entirely in Japanese with zero English guidance from authorities. 3.2M foreign residents need ongoing compliance support. Company registration still requires physical hanko and Japanese-language forms.',
+    cost:'¥200K–¥1M (certifications + legal tools + marketing)',
+    revenue:'¥80K–¥400K per client engagement; retainer compliance services',
+    challenge:'Requires administrative scrivener (行政書士) partnership or certification for legal work; competition from established firms',
+    market:'¥50B+ immigration/relocation market; growing 25%+ with FDI and tourism push',
+    tags: { budget:['bootstrap','small'], skills:['business'], target:['expats','b2b','tourists'], model:['service'], trend:['dx','tourism'] }
+  },
+  {
+    id:15, emoji:'🌿',
+    title:'Corporate Wellness & Burnout Prevention',
+    tagline:'Sell to HR teams fighting Japan\'s karoshi epidemic',
+    desc:'Offer corporate wellness programs targeting Japan\'s overwork crisis: on-site yoga or mindfulness sessions, burnout risk assessments, management coaching, or ergonomics consulting. Companies are under legal pressure (since 2015 Stress Check Law) and desperately need credible vendors. Easy to start as a solo consultant and scale with a team.',
+    japan:'Japan has the world\'s highest rates of occupational stress — 60%+ of workers report significant job strain. The government mandates annual stress checks for all companies with 50+ employees. Companies that demonstrate wellness initiatives receive public recognition (Healthy Company 2000) which serves as marketing fuel for B2B recruitment. Decision-makers are HR directors, not employees, so selling is B2B.',
+    cost:'¥200K–¥2M (certifications + materials + tools)',
+    revenue:'¥300K–¥2M per corporate contract; ¥50K–¥200K/month retainer',
+    challenge:'Long B2B sales cycles; need credible credentials; conservative HR buyers require trust-building',
+    market:'¥300B corporate wellness market; growing 20%+ per year',
+    tags: { budget:['bootstrap','small','medium'], skills:['health','education','business'], target:['b2b'], model:['service'], trend:['aging','dx'] }
+  }
+];
+
+const LOADING_FACTS = [
+  'Japan has more vending machines per capita than any country — 1 for every 23 people.',
+  'The Tokyo–Osaka shinkansen bullet train has been running for 60 years with zero fatal accidents.',
+  'Japan\'s convenience stores (konbini) serve 15 million customers daily and offer 3,000+ products.',
+  'Over 60% of global Netflix anime viewership comes from outside Asia.',
+  'Japan\'s aging population is expected to reach 35% over 65 by 2040.',
+  'Japan has the world\'s lowest unemployment rate at under 2.5%, driving a severe labor shortage.',
+  'The weak yen (2024) has made Japan 30–40% cheaper for foreign visitors compared to 2020.'
+];
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────
+function pick(el) {
+  const s = el.dataset.step;
+  document.querySelectorAll(`[data-step="${s}"]`).forEach(e => e.classList.remove('selected'));
+  el.classList.add('selected');
+  ANSWERS[s] = el.dataset.val;
+  document.getElementById(`btn-${s}`).disabled = false;
+}
+
+function nextStep() {
+  if (!ANSWERS[step]) return;
+  document.getElementById(`step-${step}`).classList.remove('active');
+  step++;
+  document.getElementById(`step-${step}`).classList.add('active');
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function prevStep() {
+  if (step <= 1) return;
+  document.getElementById(`step-${step}`).classList.remove('active');
+  step--;
+  document.getElementById(`step-${step}`).classList.add('active');
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateProgress() {
+  const pct = ((step - 1) / 6) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = step + ' / 6';
+}
+
+function startQuestionnaire() {
+  document.getElementById('hero').style.display = 'none';
+  document.getElementById('questionnaire').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── SCORING ─────────────────────────────────────────────────────────────
+function score(idea) {
+  let s = 0;
+  const a = ANSWERS;
+  if (idea.tags.budget.includes(a[2]))  s += 3;
+  if (idea.tags.skills.includes(a[3]))  s += 3;
+  if (idea.tags.target.includes(a[4]))  s += 2;
+  if (idea.tags.model.includes(a[5]))   s += 2;
+  if (idea.tags.trend.includes(a[6]))   s += 5;
+
+  // Bonus: foreigner-friendly ideas
+  const foreignerBonus = [2, 5, 7, 10, 11, 12, 14];
+  if ((a[1] === 'foreigner_resident' || a[1] === 'planning_move') && foreignerBonus.includes(idea.id)) s += 1;
+
+  // Bonus: fully remote-capable ideas
+  const remoteIdeas = [5, 10, 11, 12, 7];
+  if (a[1] === 'remote' && remoteIdeas.includes(idea.id)) s += 3;
+
+  // Penalize physical store if remote or planning_move
+  if ((a[1] === 'remote') && idea.tags.model.includes('brick') && !idea.tags.model.includes('ecommerce') && !idea.tags.model.includes('digital') && !idea.tags.model.includes('service')) s -= 2;
+
+  return s;
+}
+
+// ─── GENERATE ────────────────────────────────────────────────────────────
+function generate() {
+  if (!ANSWERS[6]) return;
+  document.getElementById('questionnaire').style.display = 'none';
+
+  document.getElementById('loading-fact').textContent =
+    LOADING_FACTS[Math.floor(Math.random() * LOADING_FACTS.length)];
+  document.getElementById('loading').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  setTimeout(() => {
+    const ranked = [...IDEAS]
+      .map(idea => ({ ...idea, score: score(idea) }))
+      .sort((a, b) => b.score - a.score);
+
+    // Deduplicate by trend tag to ensure variety
+    const picked = [];
+    const usedTrends = new Set();
+    for (const idea of ranked) {
+      if (picked.length >= 4) break;
+      const primaryTrend = idea.tags.trend[0];
+      if (!usedTrends.has(primaryTrend) || picked.length >= 2) {
+        picked.push(idea);
+        usedTrends.add(primaryTrend);
+      }
+    }
+    if (picked.length < 4) {
+      for (const idea of ranked) {
+        if (!picked.find(p => p.id === idea.id)) picked.push(idea);
+        if (picked.length >= 4) break;
+      }
+    }
+
+    document.getElementById('loading').style.display = 'none';
+    renderResults(picked.slice(0, 4));
+    document.getElementById('results').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 2200);
+}
+
+// ─── RENDER ───────────────────────────────────────────────────────────────
+const RANK = [
+  { label: '★ Best Match',        color: '#C8102E' },
+  { label: '◆ Strong Fit',        color: '#c8902a' },
+  { label: '● Worth Exploring',   color: '#2e7d32' },
+  { label: '◇ Bonus Idea',        color: '#1565c0' },
+];
+
+function renderResults(ideas) {
+  document.getElementById('cards').innerHTML = ideas.map((idea, i) => `
+    <div class="idea-card">
+      <div class="card-top">
+        <div class="idea-emoji">${idea.emoji}</div>
+        <div class="idea-meta">
+          <div class="idea-rank" style="color:${RANK[i].color}">${RANK[i].label}</div>
+          <div class="idea-title">${idea.title}</div>
+          <div class="idea-tagline">${idea.tagline}</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="idea-desc">${idea.desc}</p>
+        <div class="japan-box">
+          <div class="japan-box-label">🗾 Why This Works in Japan Right Now</div>
+          <p>${idea.japan}</p>
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <span class="metric-label">Startup Cost</span>
+            <span class="metric-value">💰 ${idea.cost}</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Revenue Potential</span>
+            <span class="metric-value">📈 ${idea.revenue}</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Market Size</span>
+            <span class="metric-value">🎯 ${idea.market}</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Key Challenge</span>
+            <span class="metric-value">⚠️ ${idea.challenge}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ─── EXPORT PDF ──────────────────────────────────────────────────────────
+function exportPDF() {
+  document.getElementById('print-date').textContent =
+    'Generated ' + new Date().toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+  window.print();
+}
+
+// ─── RESTART ─────────────────────────────────────────────────────────────
+function restart() {
+  Object.keys(ANSWERS).forEach(k => delete ANSWERS[k]);
+  step = 1;
+  document.querySelectorAll('.opt').forEach(e => e.classList.remove('selected'));
+  document.querySelectorAll('.btn-next').forEach(b => b.disabled = true);
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-1').classList.add('active');
+  document.getElementById('progress-fill').style.width = '0';
+  document.getElementById('progress-text').textContent = '1 / 6';
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('hero').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
